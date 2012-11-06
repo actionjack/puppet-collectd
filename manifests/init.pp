@@ -35,7 +35,38 @@
 #
 # Copyright 2011 Your name here, unless otherwise noted.
 #
-class collectd {
-
-
+class collectd (
+  $graphite_host = 'graphite',
+  $graphite_port = '2003'
+) inherits collectd::params {
+  package { 'collectd5':
+    ensure => 'latest',
+  }
+  service { 'collectd5':
+    ensure     => 'running',
+    enable     => true,
+    hasrestart => true,
+    hasstatus  => true,
+  }
+  File {
+    owner  => 'root',
+    group  => 'root',
+    notify => Service['collectd5'],
+  }
+  file {'/etc/collectd5.d':
+    ensure => 'directory',
+    mode   => '0755',
+  }
+  file {'/etc/sysconfig/collectd5':
+    content => template('collectd/collectd5.erb'),
+    mode    => '0644',
+  }
+  file {'/etc/collectd5.conf':
+    content => template('collectd/collectd5.conf.erb'),
+    mode    => '0644',
+  }
+  file {'/etc/collectd5.d/graphite.conf':
+    content => template('collectd/plugins/graphite.conf.erb'),
+    mode    => '0644',
+  }
 }

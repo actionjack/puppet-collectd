@@ -1,0 +1,8 @@
+BaseDir     "/var/lib/collectd5"
+PIDFile     "/var/run/collectd5.pid"
+LoadPlugin syslog
+LoadPlugin cpu
+LoadPlugin interface
+LoadPlugin load
+LoadPlugin memory
+Include "/etc/collectd5.d/*.conf"
