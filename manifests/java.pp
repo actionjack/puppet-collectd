@@ -7,7 +7,7 @@ class collectd::java (
     ensure => 'installed',
   }
   file {'/etc/collectd5.d/java.conf':
-    content => template['collectd/java.conf.erb'],
+    content => template('collectd/plugins/java.conf.erb'),
     notify  => Service['collectd5'],
   }
 }
