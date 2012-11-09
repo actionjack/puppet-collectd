@@ -1,0 +1,22 @@
+LoadPlugin "disk"
+
+<Plugin "disk">
+<%  diskdrives.split(',').each do |disk| -%>
+  Disk "<%= disk %>"
+<% end -%>
+  IgnoreSelected false
+</Plugin>
+
+loadPlugin "df"
+
+<Plugin df>
+  FSType "proc"
+  FSType "sysfs"
+  FSType "fusectl"
+  FSType "debugfs"
+  FSType "securityfs"
+  FSType "devpts"
+  FSType "tmpfs"
+  IgnoreSelected true
+</Plugin>
+
