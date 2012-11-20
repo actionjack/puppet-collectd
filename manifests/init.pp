@@ -69,4 +69,7 @@ class collectd (
     content => template('collectd/plugins/graphite.conf.erb'),
     mode    => '0644',
   }
+  file { '/opt/collectd-plugins':
+    ensure => 'directory'
+  }
 }

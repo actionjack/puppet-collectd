@@ -1,3 +1,6 @@
 [submodule "files/opt/collectd-plugins/collectd-mongodb"]
 	path = files/opt/collectd-plugins/collectd-mongodb
 	url = git://github.com/sebest/collectd-mongodb.git
+[submodule "files/opt/collectd-plugins/collectd-haproxy"]
+	path = files/opt/collectd-plugins/collectd-haproxy
+	url = git://github.com/mleinart/collectd-haproxy.git
